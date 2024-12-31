@@ -10,6 +10,7 @@ import { USER_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '@/redux/authslice'
+import { Loader2 } from 'lucide-react'
 
 
 const Signup = () => {
@@ -22,8 +23,8 @@ const Signup = () => {
         role: "",
         file: ""
     });
-    
-    const {loading} = useSelector(store=>store.auth);
+
+    const { loading } = useSelector(store => store.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -59,7 +60,7 @@ const Signup = () => {
             console.log(error);
             toast.error(error.response.data.message);
         }
-        finally{
+        finally {
             dispatch(setLoading(false));
         }
     }
@@ -104,7 +105,7 @@ const Signup = () => {
                     <div className='my-2'>
                         <Label>Password</Label>
                         <Input
-                            type="text"
+                            type="password"
                             value={input.password}
                             name="password"
                             onChange={changeEventHandler}
@@ -147,7 +148,10 @@ const Signup = () => {
                         </div>
                     </div>
                     {
-                        loading ? <Button className="w-full my-4"> <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait </Button> : <Button type="submit" className="w-full my-4">SignUp</Button>
+                        loading ? <Button className="w-full my-4 bg-gray-500 text-white" disabled>
+                            <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait
+                        </Button>
+                            : <Button type="submit" className="w-full my-4 bg-blue-500 text-white hover:bg-blue-600">SignUp</Button>
                     }
                     <span>Already have an account? <Link to="/login" className='text-blue-500 text-sm'> Login </Link> </span>
                 </form>
@@ -157,3 +161,4 @@ const Signup = () => {
 }
 
 export default Signup;
+

@@ -80,7 +80,7 @@ const Login = () => {
           <div className='my-2'>
             <Label>Password</Label>
             <Input
-              type="text"
+              type="password"
               value={input.password}
               name="password"
               onChange={changeEventHandler}
@@ -114,7 +114,7 @@ const Login = () => {
             </RadioGroup>
           </div>
           {
-            loading ? <Button className="w-full my-4"> <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait </Button> : <Button type="submit" className="w-full my-4">Login</Button>
+            loading ? <Button className="w-full my-4"> <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait </Button> :<Button type="submit" className="w-full my-4 bg-blue-500 text-white hover:bg-blue-600">Login</Button>
           }
           <span>Don't have an account? <Link to="/signup" className='text-blue-500 text-sm'> SignUp </Link> </span>
         </form>

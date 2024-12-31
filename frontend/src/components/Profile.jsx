@@ -66,7 +66,6 @@ export const Profile = () => {
           {isResume ? (
             <a
               target="_blank"
-              rel="noopener noreferrer"
               href={user?.profile?.resume}
               className="text-blue-500 w-full hover:underline cursor-pointer"
             >
@@ -85,3 +84,5 @@ export const Profile = () => {
     </div>
   );
 };
+
+

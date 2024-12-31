@@ -70,7 +70,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     <div>
       <Dialog open={open}>
         <DialogContent aria-describedby="dialog-description" className="sm:max-w-[425px] bg-white" onInteractOutside={() => setOpen(false)}>
-          <DialogHeader> 
+          <DialogHeader>
             <DialogTitle>Update Profile</DialogTitle>
           </DialogHeader>
           <form onSubmit={submitHandler}>
@@ -156,5 +156,3 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
 };
 
 export default UpdateProfileDialog;
-
-
