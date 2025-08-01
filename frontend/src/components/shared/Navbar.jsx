@@ -1,17 +1,18 @@
 import React from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Button } from '../ui/button';
-import { Avatar, AvatarImage } from '../ui/avatar'; // Import Avatar component
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { LogOut, User2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'; // Import axios
 import { USER_API_END_POINT } from '@/utils/constant';
 import { toast } from 'sonner';
-import { setUser } from '@/redux/authslice'; // Replace with your actual action for setting user
+import { setUser } from '@/redux/authslice';
 
 const Navbar = () => {
     const { user } = useSelector(store => store.auth);
+    console.log(user)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -52,13 +53,25 @@ const Navbar = () => {
                             <Popover className='cursor-pointer'>
                                 <PopoverTrigger asChild>
                                     <Avatar>
-                                        <AvatarImage src={user?.profile?.profilePhoto} alt="@shadcn" />
+                                        <AvatarImage
+                                            src={user?.profile?.profilePhoto || undefined}
+                                            alt={user?.fullname || "User"}
+                                        />
+                                        <AvatarFallback  className="bg-gray-200 text-black font-semibold">
+                                            {user?.fullname?.split(" ").map(word => word[0]).join("").toUpperCase() || "U"}
+                                        </AvatarFallback>
                                     </Avatar>
                                 </PopoverTrigger>
                                 <PopoverContent>
                                     <div className='flex gap-4 space-y-2'>
-                                        <Avatar className='cursor-pointer'>
-                                            <AvatarImage src={user?.profile?.profilePhoto} alt="@shadcn" />
+                                        <Avatar>
+                                            <AvatarImage
+                                                src={user?.profile?.profilePhoto || undefined}
+                                                alt={user?.fullname || "User"}
+                                            />
+                                            <AvatarFallback  className="bg-gray-200 text-black font-semibold">
+                                                {user?.fullname?.split(" ").map(word => word[0]).join("").toUpperCase() || "U"}
+                                            </AvatarFallback>
                                         </Avatar>
                                         <div>
                                             <h4>{user?.fullname}</h4>

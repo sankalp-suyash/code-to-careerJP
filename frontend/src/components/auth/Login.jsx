@@ -74,6 +74,7 @@ const Login = () => {
               name="email"
               onChange={changeEventHandler}
               placeholder="Enter your email"
+              autoComplete="email"
             />
           </div>
 
@@ -85,6 +86,7 @@ const Login = () => {
               name="password"
               onChange={changeEventHandler}
               placeholder="Enter your password"
+              autoComplete="current-password"
             />
           </div>
           <div className='flex items-center justify-between'>

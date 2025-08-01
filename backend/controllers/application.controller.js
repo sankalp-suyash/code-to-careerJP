@@ -113,7 +113,7 @@ export const updateStatus = async (req,res) => {
                 message:"Application not found.",
                 success:false
             })
-        }; 
+        };
 
         // update the status
         application.status = status.toLowerCase();
